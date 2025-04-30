@@ -1,0 +1,59 @@
+
+body {
+    width: 100%;
+    height: 100%;
+
+}
+
+nav {
+    background-color: var(--color-background);
+    height: 4rem;
+    margin-bottom: 2em;
+
+    .nav-link {
+        color: var(--color-text);
+    }
+    
+    ul {
+        max-width: 70%;
+        width: 100%;
+        max-height: 100%;
+    }
+
+    a {
+        padding: 0px 0px;
+        margin: 0px 0px;
+        text-decoration: none;
+    }
+
+    img {
+        width: 100px;
+    }
+
+    button {
+        color: var(--color-buttons);
+    }
+}
+
+main {
+    .row {
+        width: 100%;
+        
+    }
+
+    .col {
+        width: 30%;
+        border: none;
+        border-radius: 8px;
+        padding: 0.2rem;
+
+        .card {
+            width: 100%
+        }
+    }
+
+    .form-select, h6 {
+        margin-bottom: 16px;
+    }
+}
+

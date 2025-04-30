@@ -9,16 +9,53 @@
         <link rel="stylesheet" href="./style/root.css">
         <link rel="stylesheet" href="./style/style.css">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
- 
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./strings/scripts"></script>
+        
     </head>
     <body>
-            <nav>
-                <a href="http://127.0.0.1:5500/index.html"><img src="./assets/images/logo.png" alt="coffee-logo"></a>
-                <a href="">Home</a> <!-- AÑÁDIR ENLACE AL PRIMER PRODUCTO DE LA LISTA -->
-                <button type="menu"><i class="bi bi-bag-plus-fill"></i></button>
+            <nav class="d-flex justify-content-center">
+                <ul class="nav justify-content-between">
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="" aria-current="page" href="http://127.0.0.1:5500/index.html"><img src="./assets/images/logo.png" alt="coffee-logo"></a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                      <a class="nav-link" href="#main">Home</a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                      <button class="nav-link shoppingCartIcon"><i class="bi bi-bag-dash-fill"></i></button>
+                    </li>
+                  </ul>
             </nav>
+
+            <main id="main">
+                <div class="container text-center">
+                    <div class="row row-cols-3 gap-3">
+                        <div class="col text-start">
+                            <div class="card">
+                                <img src="https://syra.coffee/cdn/shop/files/Altamogiana250grgood.png?v=1744366927" alt="">
+                                <div class="card-body">  
+                                    <h5 class="card-title">Coffee</h5>
+                                    <p class="card-text">Desde las montañas de Huye, Ruanda, a altitudes que van de los 1,980 a los 2,250 metros sobre el nivel del mar, nace Shanga. Este café es cultivado por Abdul Rudahunga, un productor que, aprovechando las condiciones excepcionales de la región, trabaja duro para resaltar lo mejor de su tierra.</p>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>250 gr</option>
+                                        <option value="1">500 gr</option>
+                                        <option value="2">1 Kg</option>
+                                    </select>
+                                    <h6>15,00$</h6>
+                                    <button class="btn btn-primary">Add to cart</button>
+                                </div>
+                              </div>
+                          </div>
+
+                        </div>
+                    </div>
+                  </div>
+                  
+            </main>
 
         <main>
 
