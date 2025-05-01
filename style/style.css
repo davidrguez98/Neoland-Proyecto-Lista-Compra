@@ -36,21 +36,22 @@ nav {
 }
 
 main {
-    .row {
-        width: 100%;
-        
-    }
-
-    .col {
-        width: 30%;
-        border: none;
-        border-radius: 8px;
-        padding: 0.2rem;
-
-        .card {
-            width: 100%
+    
+    .container {
+        margin: 0;
         }
-    }
+    
+        .col {
+            width: 30%;
+            border: none;
+            border-radius: 8px;
+            padding: 0.2rem;
+    
+            .card {
+                width: 100%
+            }
+        }
+
 
     .form-select, h6 {
         margin-bottom: 16px;
