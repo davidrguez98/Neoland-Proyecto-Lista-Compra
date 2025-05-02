@@ -2,43 +2,76 @@
 
 class Article {
 
-    constructor(id, img, name, description, quantity) {
+    constructor(id, img, name, description, quantity, size) {
         this.id = id
         this.img  = img
         this.name = name
         this.description = description
         this.quantity = quantity
-        this.size = [250, 500, 1.000]
+        this.size = size
     }
 }
 
-/* ============ FUNCIONES ============ */
+document.addEventListener("DOMContentLoaded", function() {
 
-let counter = 1
-
-function addArticle(img, name, description = "No description", quantity) {
-
-    id = counter
-    counter++
-
-    let newArticle = new Article(id, img, name, description, 3)
-
-    return newArticle
-
-}
-
-function editArticle() {
-
-}
-
-function deleteArticle() {
     
-}
+    /* ============ VARIBLES ============ */
+    
+    const myForm = document.querySelector("#myForm")
+    
+    /* ============ FUNCIONES ============ */
+    
+    let counter = 1
+    let ARTICLES = []
+    
+    function addArticle() {
 
-let coffee1 = addArticle("foto1", "Colombia", "Café suave", 2)
-let coffee2 = addArticle("foto1", "Guatemala", "Café suave", 2)
-let coffee3 = addArticle("foto1", "Peru", "Café suave", 2)
+        const file = document.querySelector(".img-js").files[0];
+        const img = file ? URL.createObjectURL(file) : "";
+        const name = document.querySelector(".name-js").value
+        const description = document.querySelector(".description-js").value
+        const quantity = document.querySelector(".quantity-js").value
+        const size = document.querySelector(".size-js").value
+        
+        id = counter
+        counter++
+        
+        let newArticle = new Article(id, img, name, description, quantity, size)
 
-console.log(coffee1)
-console.log(coffee2)
-console.log(coffee3)
+        ARTICLES.push(newArticle)
+              
+    }
+
+    function display() {
+        
+        for (let i of ARTICLES) {
+            document.querySelector(".asd").innerHTML += `
+            <ul>
+                <li><img src="${i.img}" alt=""></li>
+                <li>${i.name}</li>
+                <li>${i.description}</li>
+                <li>${i.quantity}</li>
+                <li>${i.size}</li>
+            </ul>
+        `
+        }
+    }
+        
+    
+    
+    function editArticle() {
+        
+    }
+    
+    function deleteArticle() {
+        
+    }
+
+    
+    myForm.querySelector(".new-article-js").addEventListener("click", function(event) {
+        event.preventDefault()
+        addArticle()
+        display()
+    })
+
+})
