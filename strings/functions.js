@@ -56,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
         `
         }
     }
-        
-    
     
     function editArticle() {
         
@@ -69,6 +67,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     myForm.querySelector(".new-article-js").addEventListener("click", function(event) {
+        event.preventDefault()
+        addArticle()
+        display()
+        console.log()
+    })
+
+    document.querySelector(".new-article").addEventListener("click", function(event) {
         event.preventDefault()
         addArticle()
         display()
