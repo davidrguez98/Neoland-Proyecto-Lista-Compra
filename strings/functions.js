@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault()
         addArticle()
         display()
-        console.log()
     })
 
     document.querySelector(".new-article").addEventListener("click", function(event) {
