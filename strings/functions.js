@@ -38,8 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         let newArticle = new Article(id, img, name, description, quantity, size)
 
-        ARTICLES.push(newArticle)
-              
+        ARTICLES.push(newArticle)              
     }
 
     function display() {

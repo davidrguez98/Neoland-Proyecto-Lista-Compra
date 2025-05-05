@@ -44,7 +44,7 @@ main {
         }
     
         .col {
-            width: 30%;
+            width: 10%;
             border: none;
             border-radius: 8px;
             padding: 0.2rem;
@@ -56,7 +56,7 @@ main {
 
 
     .form-select, h6 {
-        margin-bottom: 16px;
+        margin-bottom: 1em;
     }
 }
 
