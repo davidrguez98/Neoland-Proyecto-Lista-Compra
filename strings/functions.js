@@ -1,8 +1,8 @@
 import { Article } from "./object.js";
 import { myForm, file, name, description, quantity, size } from "./variables.js"
 import { modalClose } from "../utilities/bootstrap-functions.js"
+import { storage } from "../database/data-article.js"
 
-let ARTICLES = []
 let counter = 0
 
 function addArticle() {
@@ -12,14 +12,14 @@ function addArticle() {
     
     let newArticle = new Article(id, img, name.value, description.value, quantity.value, size.value)
 
-    ARTICLES.push(newArticle)    
+    storage.push(newArticle)
 }
 
 function display() {
 
     document.querySelector(".asd").innerHTML = ""
     
-    for (let i of ARTICLES) {
+    for (let i of storage) {
             document.querySelector(".asd").innerHTML += `
             <ul>
             <li><img src="${i.img}" alt=""></li>
