@@ -13,12 +13,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="./strings/scripts"></script>
+        <script src="./strings/s1cripts"></script>
         
     </head>
     <body>
             <nav class="d-flex justify-content-center">
-                <ul class="nav justify-content-between">
+                <ul class="nav justify-content-between"  style="width: 80%;">
                     <li class="nav-item d-flex align-items-center">
                         <a class="" aria-current="page" href="http://127.0.0.1:5500/index.html"><img src="./assets/images/logo.png" alt="coffee-logo"></a>
                     </li>
@@ -29,7 +29,7 @@
                         <a href="./pages/admin-web.html"><button class="nav-link shoppingCartIcon"><i class="bi bi-person-fill"></i></button></a>
                         <button class="nav-link shoppingCartIcon"><i class="bi bi-bag-dash-fill"></i></button>
                     </li>
-                  </ul>
+                </ul>
             </nav>
 
             <div class="d-flex justify-content-center" style="width: 80%; margin: 0 auto;">
@@ -44,6 +44,57 @@
 
 
                                     <!-- Estructura del objeto -->
+                                    <div class="col text-start pb-4" style="width: 32%;">
+                                        <div class="card" style=" background-color: red;">
+                                            <img src="https://syra.coffee/cdn/shop/files/Altamogiana250grgood.png?v=1744366927" alt="">
+                                            <div class="card-body">  
+                                                <h5 class="card-title">Coffee</h5>
+                                                <p class="card-text">Desde las montañas de Huye, Ruanda, a altitudes que van de los 1,980 a los 2,250 metros sobre el nivel del mar, nace Shanga. Este café es cultivado por Abdul Rudahunga, un productor que, aprovechando las condiciones excepcionales de la región, trabaja duro para resaltar lo mejor de su tierra.</p>
+                                                <select class="form-select mb-2" aria-label="Default select example">
+                                                    <option selected>250 gr</option>
+                                                    <option value="1">500 gr</option>
+                                                    <option value="2">1 Kg</option>
+                                                </select>
+                                                <h6>15,00$</h6>
+                                                <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Add to cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col text-start pb-4" style="width: 32%;">
+                                        <div class="card">
+                                            <img src="https://syra.coffee/cdn/shop/files/Altamogiana250grgood.png?v=1744366927" alt="">
+                                            <div class="card-body">  
+                                                <h5 class="card-title">Coffee</h5>
+                                                <p class="card-text">Desde las montañas de Huye, Ruanda, a altitudes que van de los 1,980 a los 2,250 metros sobre el nivel del mar, nace Shanga. Este café es cultivado por Abdul Rudahunga, un productor que, aprovechando las condiciones excepcionales de la región, trabaja duro para resaltar lo mejor de su tierra.</p>
+                                                <select class="form-select mb-2" aria-label="Default select example">
+                                                    <option selected>250 gr</option>
+                                                    <option value="1">500 gr</option>
+                                                    <option value="2">1 Kg</option>
+                                                </select>
+                                                <h6>15,00$</h6>
+                                                <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Add to cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col text-start pb-4" style="width: 32%;">
+                                        <div class="card">
+                                            <img src="https://syra.coffee/cdn/shop/files/Altamogiana250grgood.png?v=1744366927" alt="">
+                                            <div class="card-body">  
+                                                <h5 class="card-title">Coffee</h5>
+                                                <p class="card-text">Desde las montañas de Huye, Ruanda, a altitudes que van de los 1,980 a los 2,250 metros sobre el nivel del mar, nace Shanga. Este café es cultivado por Abdul Rudahunga, un productor que, aprovechando las condiciones excepcionales de la región, trabaja duro para resaltar lo mejor de su tierra.</p>
+                                                <select class="form-select mb-2" aria-label="Default select example">
+                                                    <option selected>250 gr</option>
+                                                    <option value="1">500 gr</option>
+                                                    <option value="2">1 Kg</option>
+                                                </select>
+                                                <h6>15,00$</h6>
+                                                <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Add to cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="col text-start pb-4" style="width: 32%;">
                                         <div class="card">
                                             <img src="https://syra.coffee/cdn/shop/files/Altamogiana250grgood.png?v=1744366927" alt="">
@@ -81,6 +132,44 @@
                                     <div class="card-body">
 
                                         <!-- Item -->
+                                        <div class="d-flex flex-row cart-item mb-3">
+                                            <div class="d-flex flex-column" style="width: 70%;">
+                                                <h6 class="card-title">Product</h6>
+                                                <div class=" d-flex">
+                                                    <div class="input-group d-flex">
+                                                        <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
+                                                        <input style="max-width:100px" type="text" class="form-control  form-control-sm text-center quantity-input" value="1">
+                                                        <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="md-2" style="width: 30%;">
+                                                <p class="fw-bold mb-0">$99.99</p>
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row cart-item mb-3">
+                                            <div class="d-flex flex-column" style="width: 70%;">
+                                                <h6 class="card-title">Product</h6>
+                                                <div class=" d-flex">
+                                                    <div class="input-group d-flex">
+                                                        <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
+                                                        <input style="max-width:100px" type="text" class="form-control  form-control-sm text-center quantity-input" value="1">
+                                                        <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="md-2" style="width: 30%;">
+                                                <p class="fw-bold mb-0">$99.99</p>
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
                                         <div class="d-flex flex-row cart-item mb-3">
                                             <div class="d-flex flex-column" style="width: 70%;">
                                                 <h6 class="card-title">Product</h6>

@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="../strings/functions.js"></script>
+        <script type="module" src="../strings/functions.js"></script>
         
     </head>
     <body>
@@ -40,12 +40,12 @@
 
                         <div class="input-group mb-2">
                             <span class="input-group-text" id="basic-addon1">Product's name</span>
-                            <input type="text" class="form-control name-js" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="name-js" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
 
                         <div class="input-group mb-2">
                             <span class="input-group-text">Description</span>
-                            <textarea class="form-control description-js" aria-label="With textarea"></textarea>
+                            <textarea class="form-control" id="description-js" aria-label="With textarea"></textarea>
                         </div>
 
                         <div class="input-group mb-2">
@@ -72,10 +72,13 @@
             </div>
 
             
+            
         </main>
+
         <div class="asd">
 
             
         </div>
+        
     </body>
 </html>
