@@ -6,6 +6,6 @@ export const name = document.querySelector("#name-js")
 
 export const description = document.querySelector("#description-js")
 
-export const quantity = document.querySelector(".quantity-js")
+export const quantity = document.querySelector("#quantity")
 
-export const size = document.querySelector(".size-js")
+export const size = document.querySelector("#floatingSelect")

@@ -1,25 +1,30 @@
 import { Article } from "./object.js";
 import { myForm, file, name, description, quantity, size } from "./variables.js"
 import { modalClose } from "../utilities/bootstrap-functions.js"
-import { storage } from "../database/data-article.js"
+// import { storage } from "../database/data-article.js"
 
-let counter = 0
+let list = []
 
 function addArticle() {
-    
-    const id = counter++
-    const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
-    
-    let newArticle = new Article(id, img, name.value, description.value, quantity.value, size.value)
+    const img = file.files[0] ? URL.createObjectURL(file.files[0]) : "";
+    const selectedSize = size.value
+    const selectedQuantity = parseInt(quantity.value)
 
-    storage.push(newArticle)
+    let existingArticle = list.find(article => article.name === articleName);
+
+    if (existingArticle) {
+        existingArticle.addStock(selectedSize, selectedQuantity);
+    } else {
+        const newArticle = new Article(img, name.value, description.value, selectedSize, selectedQuantity);
+        list.push(newArticle);
+    }
 }
 
 function display() {
 
     document.querySelector(".asd").innerHTML = ""
     
-    for (let i of storage) {
+    for (let i of list) {
             document.querySelector(".asd").innerHTML += `
             <ul>
             <li><img src="${i.img}" alt=""></li>
