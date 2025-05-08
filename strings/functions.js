@@ -1,4 +1,4 @@
-import { Article } from "./object.js";
+import { Article } from "./object.js"
 import { myForm, file, name, description, quantity, size } from "./variables.js"
 import { modalClose } from "../utilities/bootstrap-functions.js"
 // import { storage } from "../database/data-article.js"
@@ -6,18 +6,22 @@ import { modalClose } from "../utilities/bootstrap-functions.js"
 let list = []
 
 function addArticle() {
-    const img = file.files[0] ? URL.createObjectURL(file.files[0]) : "";
+    const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
     const selectedSize = size.value
     const selectedQuantity = parseInt(quantity.value)
 
-    let existingArticle = list.find(article => article.name === articleName);
+    let existingArticle = list.find(article => article.name === articleName)
 
     if (existingArticle) {
-        existingArticle.addStock(selectedSize, selectedQuantity);
+        existingArticle.addStock(selectedSize, selectedQuantity)
+        console.log("Stock actualizado:", existingArticle)
     } else {
-        const newArticle = new Article(img, name.value, description.value, selectedSize, selectedQuantity);
-        list.push(newArticle);
+        const newArticle = new Article(img, name.value, description.value, selectedSize, selectedQuantity)
+        list.push(newArticle)
+        console.log("Nuevo artículo añadido:", newArticle)
     }
+
+    console.log("Lista actualizada:", list)
 }
 
 function display() {
