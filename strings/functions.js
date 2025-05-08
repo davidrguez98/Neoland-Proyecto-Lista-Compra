@@ -22,20 +22,20 @@ function addArticle() {
     }
 
     console.log("Lista actualizada:", list)
+
+    console.log(list)
+    return list
 }
 
 function display() {
 
-    document.querySelector(".asd").innerHTML = ""
-    
     for (let i of list) {
-            document.querySelector(".asd").innerHTML += `
+            document.querySelector("#StorageList").innerHTML += `
             <ul>
             <li><img src="${i.img}" alt=""></li>
             <li>${i.name}</li>
             <li>${i.description}</li>
-            <li>${i.quantity}</li>
-            <li>${i.size}</li>
+            <li>${i.stock}</li>
             </ul>
             `
     }
@@ -52,14 +52,13 @@ function deleteArticle() {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-   
-    
-
-    
+    display()
+       
     myForm.querySelector(".new-article-js").addEventListener("click", function(event) {
         event.preventDefault()
         addArticle()
         display()
+        window.open("./admin-web.html")
         modalClose("#addTaskModal")
     })
 
