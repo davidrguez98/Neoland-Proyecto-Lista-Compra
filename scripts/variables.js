@@ -1,4 +1,4 @@
-export const myForm = document.querySelector("#myForm")
+// export const myForm = document.querySelector("#myForm")
 
 export const file = document.querySelector(".img-js")
 

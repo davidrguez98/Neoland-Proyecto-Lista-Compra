@@ -1,4 +1,4 @@
-const defaultBBDD = [
+export const defaultBBDD = [
     {
         img: "../assets/coffee/1.webp",
         name: "Shanga",

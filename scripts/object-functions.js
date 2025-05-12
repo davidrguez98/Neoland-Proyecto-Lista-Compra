@@ -1,10 +1,9 @@
 import { Article } from "./object.js"
 import { file, name, description, quantity, size, price } from "./variables.js"
-import { modalClose } from "../utilities/bootstrap-functions.js"
 
-let list = []
+export let list = []
 
-function addArticle() {
+export function addArticle() {
     const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
     const selectedSize = size.value
     const selectedQuantity = parseInt(quantity.value)
@@ -56,5 +55,3 @@ function editArticle() {
 function deleteArticle() {
     
 }
-
-
