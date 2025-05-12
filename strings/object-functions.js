@@ -1,7 +1,6 @@
 import { Article } from "./object.js"
-import { myForm, file, name, description, quantity, size } from "./variables.js"
+import { file, name, description, quantity, size, price } from "./variables.js"
 import { modalClose } from "../utilities/bootstrap-functions.js"
-// import { storage } from "../database/data-article.js"
 
 let list = []
 
@@ -9,21 +8,21 @@ function addArticle() {
     const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
     const selectedSize = size.value
     const selectedQuantity = parseInt(quantity.value)
+    const selectedPrice = price.value
 
     let existingArticle = list.find(article => article.name === articleName)
 
     if (existingArticle) {
-        existingArticle.addStock(selectedSize, selectedQuantity)
+        existingArticle.addStock(selectedSize, selectedQuantity, selectedPrice)
         console.log("Stock actualizado:", existingArticle)
     } else {
-        const newArticle = new Article(img, name.value, description.value, selectedSize, selectedQuantity)
+        const newArticle = new Article(img, name.value, description.value, selectedSize, selectedQuantity, selectedPrice)
         list.push(newArticle)
         console.log("Nuevo artículo añadido:", newArticle)
     }
 
     console.log("Lista actualizada:", list)
-
-    console.log(list)
+    
     return list
 }
 
@@ -32,10 +31,19 @@ function display() {
     for (let i of list) {
             document.querySelector("#StorageList").innerHTML += `
             <ul>
-            <li><img src="${i.img}" alt=""></li>
-            <li>${i.name}</li>
-            <li>${i.description}</li>
-            <li>${i.stock}</li>
+                <li><img src="${i.img}" alt=""></li>
+                <li>${i.name}</li>
+                <li>${i.description}</li>
+                <ul>
+                    <li>${i.stock["250"]}</li>
+                    <li>${i.stock["500"]}</li>
+                    <li>${i.stock["1000"]}</li>
+                </ul>
+                <ul>
+                    <li>${i.price["250"]}</li>
+                    <li>${i.price["500"]}</li>
+                    <li>${i.price["1000"]}</li>
+                </ul>
             </ul>
             `
     }
@@ -50,16 +58,3 @@ function deleteArticle() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-
-    display()
-       
-    myForm.querySelector(".new-article-js").addEventListener("click", function(event) {
-        event.preventDefault()
-        addArticle()
-        display()
-        window.open("./admin-web.html")
-        modalClose("#addTaskModal")
-    })
-
-})
