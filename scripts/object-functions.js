@@ -10,7 +10,7 @@ export function addArticle() {
     const newList = readLocalStorage("newList")
 
     const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
-    const selectedSize = size.value
+    const selectedSize = parseInt(size.value)
     const selectedQuantity = parseInt(quantity.value)
     const selectedPrice = price.value
 
@@ -21,6 +21,9 @@ export function addArticle() {
 
     if (existingArticle) {
         console.log("es")
+        console.log(typeof selectedSize)
+        let sds = parseInt(selectedSize)
+        console.log(typeof sds)
         newArticle.addStock(selectedSize, selectedQuantity, selectedPrice)
     } else {
         console.log("no es")

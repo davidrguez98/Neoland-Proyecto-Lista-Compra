@@ -4,7 +4,7 @@ export class Article {
     this.name = name
     this.description = description
     this.stock = {
-      "250": 0,
+      250: 0,
       "500": 0,
       "1000": 0
     }
@@ -18,7 +18,7 @@ export class Article {
 
   addStock(size, quantity, price) {
     if (this.stock.hasOwnProperty(size)) {
-      this.stock[size] = this.stock[size] + quantity;
+      this.stock[size] = this.stock[size] + quantity; //En esta linea está el error, ya que el no me permite acceder a la nueva cantidad
       this.price[size] = price;
     } else {
       throw new Error(`Tamaño no válido: ${size}`);
@@ -35,3 +35,7 @@ Article {
   price: { '250': 15, '500': 0, '1000': 0 }
 }
 */
+
+// let dd = new Article("laskd", "laskd", "laskd", 250, 2, 12)
+// dd.addStock(250, 2, 2)
+// console.log(typeof dd.stock)
