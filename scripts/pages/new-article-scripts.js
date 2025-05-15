@@ -3,7 +3,6 @@ import { setLocalStorage } from "../localStorage/localStorage-scripts.js"
 
 export function mainNewArticle() {
 
-    
     addArticle()
     
 }

@@ -8,7 +8,6 @@ let articleList = []
 export function addArticle() {
 
     const newList = readLocalStorage("newList")
-    console.log(newList)
 
     const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
     const selectedSize = size.value
@@ -16,15 +15,28 @@ export function addArticle() {
     const selectedPrice = price.value
 
     const newArticle = new Article(img, name.value, description.value, selectedSize, selectedQuantity, selectedPrice)
-        if (newArticle.name == newList.name) {
-            newArticle.addStock(selectedSize, selectedQuantity, selectedPrice)
-            newList.push(newArticle)
-        } else {
-            newList.push(newArticle)
-            console.log("Nuevo artículo añadido:", newArticle)
-        }
+    
+    // Comprobación de si está el objeto en el stock
+    const existingArticle = newList.find(itemNewList => name.value == itemNewList.name)
 
-        setLocalStorage("newList", newList)
+    if (existingArticle) {
+        console.log("es")
+        newArticle.addStock(selectedSize, selectedQuantity, selectedPrice)
+    } else {
+        console.log("no es")
+        newList.push(newArticle)
+        console.log("Nuevo artículo añadido:", newArticle)
+    }
+        
+    
+    
+
+    // Creación del nuevo item y guardado en el LocalStorage
+    
+    
+        
+    console.log(newList)
+    setLocalStorage("newList", newList)
 }
 
 export function loadDataBBDD() {
