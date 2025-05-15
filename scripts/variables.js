@@ -1,13 +1,13 @@
-// export const myForm = document.querySelector("#myForm")
+let myForm, file, name, description, quantity, price, size
 
-export const file = document.querySelector(".img-js")
+if (typeof document !== "undefined") {
+    myForm = document.querySelector("#myForm")
+    file = document.querySelector(".img-js")
+    name = document.querySelector("#name-js")
+    description = document.querySelector("#description-js")
+    quantity = document.querySelector("#quantity")
+    price = document.querySelector("#price")
+    size = document.querySelector("#floatingSelect")
+}
 
-export const name = document.querySelector("#name-js")
-
-export const description = document.querySelector("#description-js")
-
-export const quantity = document.querySelector("#quantity")
-
-export const price = document.querySelector("#price")
-
-export const size = document.querySelector("#floatingSelect")
+export { myForm, file, name, description, quantity, price, size }

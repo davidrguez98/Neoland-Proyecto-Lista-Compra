@@ -1,57 +1,61 @@
 import { Article } from "./object.js"
 import { file, name, description, quantity, size, price } from "./variables.js"
+import { defaultBBDD } from "../database/data-storage.js"
+import { setLocalStorage, readLocalStorage } from "./localStorage/localStorage-scripts.js"
 
-export let list = []
+let articleList = []
 
 export function addArticle() {
+
+    const newList = readLocalStorage("newList")
+    console.log(newList)
+
     const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
     const selectedSize = size.value
     const selectedQuantity = parseInt(quantity.value)
     const selectedPrice = price.value
 
-    let existingArticle = list.find(article => article.name === articleName)
+    const newArticle = new Article(img, name.value, description.value, selectedSize, selectedQuantity, selectedPrice)
+        if (newArticle.name == newList.name) {
+            newArticle.addStock(selectedSize, selectedQuantity, selectedPrice)
+            newList.push(newArticle)
+        } else {
+            newList.push(newArticle)
+            console.log("Nuevo artículo añadido:", newArticle)
+        }
 
-    if (existingArticle) {
-        existingArticle.addStock(selectedSize, selectedQuantity, selectedPrice)
-        console.log("Stock actualizado:", existingArticle)
-    } else {
-        const newArticle = new Article(img, name.value, description.value, selectedSize, selectedQuantity, selectedPrice)
-        list.push(newArticle)
-        console.log("Nuevo artículo añadido:", newArticle)
-    }
-
-    console.log("Lista actualizada:", list)
-    
-    return list
+        setLocalStorage("newList", newList)
 }
 
-function display() {
+export function loadDataBBDD() {
 
-    for (let i of list) {
-            document.querySelector("#StorageList").innerHTML += `
+    defaultBBDD.map( element => {
+        articleList.push(element)
+    })
+    console.log(articleList)
+    return articleList
+}
+
+export function display(list = []) {
+
+    for (let article of list) {
+
+        document.querySelector("#StorageList").innerHTML += `
             <ul>
-                <li><img src="${i.img}" alt=""></li>
-                <li>${i.name}</li>
-                <li>${i.description}</li>
+                <li><img src="${article.img}" alt=""></li>
+                <li>${article.name}</li>
+                <li>${article.description}</li>
                 <ul>
-                    <li>${i.stock["250"]}</li>
-                    <li>${i.stock["500"]}</li>
-                    <li>${i.stock["1000"]}</li>
+                    <li>${article.stock["250"]}</li>
+                    <li>${article.stock["500"]}</li>
+                    <li>${article.stock["1000"]}</li>
                 </ul>
                 <ul>
-                    <li>${i.price["250"]}</li>
-                    <li>${i.price["500"]}</li>
-                    <li>${i.price["1000"]}</li>
+                    <li>${article.price["250"]}</li>
+                    <li>${article.price["500"]}</li>
+                    <li>${article.price["1000"]}</li>
                 </ul>
             </ul>
             `
     }
-}
-
-function editArticle() {
-    
-}
-
-function deleteArticle() {
-    
 }

@@ -1,8 +1,13 @@
-import { addArticle } from "./object-functions.js"
+import { mainNewArticle } from "./pages/new-article-scripts.js"
+import { setLocalStorage } from "./localStorage/localStorage-scripts.js"
+import { loadDataBBDD } from "./object-functions.js"
 
 document.addEventListener("DOMContentLoaded", main())
 
+
 function main() {
+
+    setLocalStorage("newList", loadDataBBDD())
 
     const path = window.location.pathname
 
@@ -23,12 +28,10 @@ function main() {
 
             break
         case path.endsWith("new-article.html"):
-            console.log("new-article")
 
-            /* Debe de llevar NewArticle y ¿LocalStorage?*/
             document.querySelector("#new-article-js").addEventListener("click", function(event) {
                 event.preventDefault()
-                addArticle()
+                mainNewArticle()
             })
 
             break
