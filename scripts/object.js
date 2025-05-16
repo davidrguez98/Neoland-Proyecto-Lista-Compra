@@ -24,6 +24,12 @@ export class Article {
       throw new Error(`Tamaño no válido: ${size}`);
     }
   }
+
+  addNewStock(size, newQuantity) {
+    if (this.stock.hasOwnProperty(size)) {
+      this.stock[size] += newQuantity
+    }
+  }
 }
 
 /* 
@@ -36,6 +42,7 @@ Article {
 }
 */
 
-// let dd = new Article("laskd", "laskd", "laskd", 250, 2, 12)
-// dd.addStock(250, 2, 2)
-// console.log(typeof dd.stock)
+
+// let d = new Article("laskd", "laskd", "laskd", 250, 2, 12)
+// d.addNewStock(250, 2, 12)
+// console.log(d)

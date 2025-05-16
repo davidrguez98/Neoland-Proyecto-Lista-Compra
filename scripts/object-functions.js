@@ -7,7 +7,8 @@ let articleList = []
 
 export function addArticle() {
 
-    const newList = readLocalStorage("newList")
+    // Se recoge el contenido del LS y se vuelve a convertir en objetos
+    const newList = readLocalStorage("newList").map(reviveArticle)
 
     const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
     const selectedSize = parseInt(size.value)
@@ -21,23 +22,15 @@ export function addArticle() {
 
     if (existingArticle) {
         console.log("es")
-        console.log(typeof selectedSize)
-        let sds = parseInt(selectedSize)
-        console.log(typeof sds)
-        newArticle.addStock(selectedSize, selectedQuantity, selectedPrice)
+        existingArticle.addNewStock(selectedSize, selectedQuantity)
+        console.log(existingArticle)
     } else {
         console.log("no es")
         newList.push(newArticle)
         console.log("Nuevo artículo añadido:", newArticle)
     }
-        
-    
-    
 
-    // Creación del nuevo item y guardado en el LocalStorage
-    
-    
-        
+    // Guardado en el LocalStorage
     console.log(newList)
     setLocalStorage("newList", newList)
 }
@@ -73,4 +66,16 @@ export function display(list = []) {
             </ul>
             `
     }
+}
+
+function reviveArticle(obj) {
+
+    const article = Object.create(Article.prototype) // Crea una instancia vacía
+    article.img = obj.img
+    article.name = obj.name
+    article.description = obj.description
+    article.stock = obj.stock
+    article.price = obj.price
+    return article
+
 }
