@@ -21,11 +21,9 @@ export function addArticle() {
     const existingArticle = newList.find(itemNewList => name.value == itemNewList.name)
 
     if (existingArticle) {
-        console.log("es")
         existingArticle.addNewStock(selectedSize, selectedQuantity)
         console.log(existingArticle)
     } else {
-        console.log("no es")
         newList.push(newArticle)
         console.log("Nuevo artículo añadido:", newArticle)
     }
