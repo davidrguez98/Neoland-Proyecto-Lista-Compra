@@ -5,6 +5,7 @@ import { setLocalStorage, readLocalStorage } from "./localStorage/localStorage-s
 
 let articleList = []
 
+//Crea artículos y comprueba si ya están
 export function addArticle() {
 
     // Se recoge el contenido del LS y se vuelve a convertir en objetos
@@ -33,6 +34,7 @@ export function addArticle() {
     setLocalStorage("newList", newList)
 }
 
+//Carga los productos predefinidos (solo principio)
 export function loadDataBBDD() {
 
     defaultBBDD.map( element => {
@@ -42,7 +44,11 @@ export function loadDataBBDD() {
     return articleList
 }
 
-export function display(list = []) {
+//Carga y muestra el LocalStorage
+export function displayLocalStorage() {
+
+    let list = readLocalStorage("newList")
+    console.log(list)
 
     for (let article of list) {
 
@@ -66,7 +72,8 @@ export function display(list = []) {
     }
 }
 
-function reviveArticle(obj) {
+
+export function reviveArticle(obj) {
 
     const article = Object.create(Article.prototype) // Crea una instancia vacía
     article.img = obj.img

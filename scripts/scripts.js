@@ -1,4 +1,5 @@
 import { mainNewArticle } from "./pages/new-article-scripts.js"
+import { mainAdminWeb } from "./pages/admin-web.js"
 import { setLocalStorage } from "./localStorage/localStorage-scripts.js"
 import { loadDataBBDD } from "./object-functions.js"
 
@@ -18,6 +19,8 @@ function main() {
         case path.endsWith("admin-web.html"):
             console.log("admin-web")
 
+            
+            mainAdminWeb()
             /* Debe de llevar, LocalStorage // display, reset, newFastArticle, NewArticle */
 
             break
@@ -29,9 +32,10 @@ function main() {
             break
         case path.endsWith("new-article.html"):
 
-            document.querySelector("#new-article-js").addEventListener("click", function(event) {
+            document.querySelector(".new-article-js").addEventListener("click", function(event) {
                 event.preventDefault()
                 mainNewArticle()
+                window.location.assign("./admin-web.html")
             })
 
             break

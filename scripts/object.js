@@ -31,18 +31,3 @@ export class Article {
     }
   }
 }
-
-/* 
-Article {
-  img: 'klasd',
-  name: 'lkhdj',
-  description: 'des',
-  stock: { '250': 22, '500': 0, '1000': 0 },
-  price: { '250': 15, '500': 0, '1000': 0 }
-}
-*/
-
-
-// let d = new Article("laskd", "laskd", "laskd", 250, 2, 12)
-// d.addNewStock(250, 2, 12)
-// console.log(d)
