@@ -1,0 +1,8 @@
+import { displayLocalStorage } from "../object-functions.js"
+
+export function mainIndexWeb() {
+
+    displayLocalStorage()
+   
+}
+

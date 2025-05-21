@@ -58,33 +58,63 @@ export function displayLocalStorage() {
     if (!list) {
         document.querySelector("#StorageList").innerHTML = ""
     } else {
-        for (let article of list) {
+        
+        if (window.location.pathname.endsWith("/") || window.location.pathname.endsWith("index.html")) {
 
-        document.querySelector("#StorageList").innerHTML += `
-            <ul>
-                <li><img src="${article.img}" alt=""></li>
-                <li>${article.name}</li>
-                <li>${article.description}</li>
-                <ul>
-                    <li>${article.stock["250"]}</li>
-                    <li>${article.stock["500"]}</li>
-                    <li>${article.stock["1000"]}</li>
-                </ul>
-                <ul>
-                    <li>${article.price["250"]}</li>
-                    <li>${article.price["500"]}</li>
-                    <li>${article.price["1000"]}</li>
-                </ul>
-            </ul>
-            `
-    }
-    }
+            console.log("asda")
+            
+            for (let article of list) {
+                
+                document.querySelector(".container-articles").innerHTML +=
+                    `<div class="col text-start pb-4" style="width: 32%;">
+                        <div class="card">
+                            <img src="${article.img}" alt="photo of coffee">
+                            <div class="card-body">  
+                                <h5 class="card-title">${article.name}</h5>
+                                <p class="card-text">${article.description}</p>
+                                <select class="form-select mb-2" aria-label="Default select example">
+                                    <option selected>250 gr</option>
+                                    <option value="1">500 gr</option>
+                                    <option value="2">1 Kg</option>
+                                </select>
+                                <h6>15,00$</h6>
+                                <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>`
+                
+                
+            } if(window.location.pathname.endsWith("admin-web.html")) {
 
-    
+                console.log("ssss")
+                for (let article of list) {
+                document.querySelector("#StorageList").innerHTML += `
+                    <ul>
+                        <li><img src="${article.img}" alt=""></li>
+                        <li>${article.name}</li>
+                        <li>${article.description}</li>
+                        <ul>
+                            <li>${article.stock["250"]}</li>
+                            <li>${article.stock["500"]}</li>
+                            <li>${article.stock["1000"]}</li>
+                        </ul>
+                        <ul>
+                            <li>${article.price["250"]}</li>
+                            <li>${article.price["500"]}</li>
+                            <li>${article.price["1000"]}</li>
+                        </ul>
+                    </ul>
+                    `
+            }
+            }
+
+            
+        }
+    }
 }
 
 //Convierte en objeto los artíclos de una lista
-export function reviveArticle(obj) {
+function reviveArticle(obj) {
 
     const article = Object.create(Article.prototype)
     article.img = obj.img
