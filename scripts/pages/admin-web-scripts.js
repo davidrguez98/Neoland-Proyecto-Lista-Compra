@@ -6,10 +6,10 @@ export function mainAdminWeb() {
     displayLocalStorage()
 
     document.querySelector(".reset-storage-js").addEventListener("click", function(event) {
-                event.preventDefault()
-                resetLocalStorage()
-                displayLocalStorage()
-            })
+        event.preventDefault()
+        resetLocalStorage()
+        displayLocalStorage()
+    })
    
 }
 

@@ -52,18 +52,20 @@ export function loadDataBBDD() {
 export function displayLocalStorage() {
 
     let list = readLocalStorage("newList")
-    console.log(list)
-    console.log("list")
 
     if (!list) {
-        document.querySelector("#StorageList").innerHTML = ""
+
+        if (window.location.pathname.endsWith("/") || window.location.pathname.endsWith("index.html")) {
+            document.querySelector(".container-articles").innerHTML = ""
+        }else if(window.location.pathname.endsWith("admin-web.html")) {
+            document.querySelector("#StorageList").innerHTML = ""
+        }
+        console.log("poyasta")
     } else {
         
         if (window.location.pathname.endsWith("/") || window.location.pathname.endsWith("index.html")) {
-
-            console.log("asda")
             
-            for (let article of list) {
+            for (let article of list) { //tengo que ver como vario el precio
                 
                 document.querySelector(".container-articles").innerHTML +=
                     `<div class="col text-start pb-4" style="width: 32%;">
@@ -84,9 +86,9 @@ export function displayLocalStorage() {
                     </div>`
                 
                 
-            } if(window.location.pathname.endsWith("admin-web.html")) {
+            } 
+        } else if(window.location.pathname.endsWith("admin-web.html")) { //hay que añadirle un nuevo formato para el admin
 
-                console.log("ssss")
                 for (let article of list) {
                 document.querySelector("#StorageList").innerHTML += `
                     <ul>
@@ -106,8 +108,6 @@ export function displayLocalStorage() {
                     </ul>
                     `
             }
-            }
-
             
         }
     }
