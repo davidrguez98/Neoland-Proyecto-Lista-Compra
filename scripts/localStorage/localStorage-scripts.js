@@ -19,15 +19,6 @@ export function readLocalStorage(key) {
     }
 }
 
-export function displayLocalStorage() {
-    console.log("Local Storage's data:");
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
-        console.log(key + " = " + value);
-    }
-}
-
 export function deleteItemLocalStorage(key) {
     if (localStorage.getItem(key) !== null) {
         localStorage.removeItem(key);
@@ -37,7 +28,6 @@ export function deleteItemLocalStorage(key) {
     }
 }
 
-export function limpiarLocalStorage() {
-    localStorage.clear();
-    alert("Local Storage has been deleted.");
+export function resetLocalStorage() {
+    localStorage.clear()
 }

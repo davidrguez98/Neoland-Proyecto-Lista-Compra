@@ -39,17 +39,13 @@ export function loadDataBBDD() {
 
     const loadDataBBDD = readLocalStorage("newList")
 
-    if (loadDataBBDD) {
-        return readLocalStorage("newList")
+    if (!loadDataBBDD || loadDataBBDD.lenght === 0) {
+        defaultBBDD.forEach(element => articleList.push(element))
+        setLocalStorage("newList", articleList)
+        console.log("Artículos cargados por defecto")
     } else {
-        defaultBBDD.map( element => {
-            articleList.push(element)
-            setLocalStorage("newList", articleList)
-            return readLocalStorage("newList")
-        })
+        console.log("Ya hay datos en el localStorage. No se cargan los predefinidos")
     }
-
-    console.log(readLocalStorage("newList"))
 }
 
 //Carga y muestra el LocalStorage
@@ -57,8 +53,12 @@ export function displayLocalStorage() {
 
     let list = readLocalStorage("newList")
     console.log(list)
+    console.log("list")
 
-    for (let article of list) {
+    if (!list) {
+        document.querySelector("#StorageList").innerHTML = ""
+    } else {
+        for (let article of list) {
 
         document.querySelector("#StorageList").innerHTML += `
             <ul>
@@ -78,6 +78,9 @@ export function displayLocalStorage() {
             </ul>
             `
     }
+    }
+
+    
 }
 
 //Convierte en objeto los artíclos de una lista

@@ -1,6 +1,7 @@
 import { mainNewArticle } from "./pages/new-article-scripts.js"
 import { mainAdminWeb } from "./pages/admin-web.js"
 import { loadDataBBDD } from "./object-functions.js"
+import { resetLocalStorage } from "./localStorage/localStorage-scripts.js"
 
 function main() {
 
@@ -12,8 +13,6 @@ function main() {
         case path.endsWith("/") || path.endsWith("index.html"):
             console.log("index")
 
-
-            
             break
         case path.endsWith("admin-web.html"):
             console.log("admin-web")
