@@ -57,14 +57,13 @@ export function displayLocalStorage() {
 
         if (window.location.pathname.endsWith("/") || window.location.pathname.endsWith("index.html")) {
             document.querySelector(".container-articles").innerHTML = ""
-        }else if(window.location.pathname.endsWith("admin-web.html")) {
+        } else if(window.location.pathname.endsWith("admin-web.html")) {
             document.querySelector("#StorageList").innerHTML = ""
         }
-        console.log("poyasta")
+
     } else {
         
-        if (window.location.pathname.endsWith("/") || window.location.pathname.endsWith("index.html")) {
-            
+        if (window.location.pathname.endsWith("/") || window.location.pathname.endsWith("index.html")) { 
             for (let article of list) { //tengo que ver como vario el precio
                 
                 document.querySelector(".container-articles").innerHTML +=
@@ -85,30 +84,30 @@ export function displayLocalStorage() {
                         </div>
                     </div>`
                 
-                
             } 
         } else if(window.location.pathname.endsWith("admin-web.html")) { //hay que añadirle un nuevo formato para el admin
 
                 for (let article of list) {
-                document.querySelector("#StorageList").innerHTML += `
-                    <ul>
-                        <li><img src="${article.img}" alt=""></li>
-                        <li>${article.name}</li>
-                        <li>${article.description}</li>
+
+                    document.querySelector("#StorageList").innerHTML += `
                         <ul>
-                            <li>${article.stock["250"]}</li>
-                            <li>${article.stock["500"]}</li>
-                            <li>${article.stock["1000"]}</li>
+                            <li><img src="${article.img}" alt=""></li>
+                            <li>${article.name}</li>
+                            <li>${article.description}</li>
+                            <ul>
+                                <li>${article.stock["250"]}</li>
+                                <li>${article.stock["500"]}</li>
+                                <li>${article.stock["1000"]}</li>
+                            </ul>
+                            <ul>
+                                <li>${article.price["250"]}</li>
+                                <li>${article.price["500"]}</li>
+                                <li>${article.price["1000"]}</li>
+                            </ul>
                         </ul>
-                        <ul>
-                            <li>${article.price["250"]}</li>
-                            <li>${article.price["500"]}</li>
-                            <li>${article.price["1000"]}</li>
-                        </ul>
-                    </ul>
-                    `
-            }
-            
+                        `
+
+                }
         }
     }
 }
