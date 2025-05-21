@@ -1,27 +1,24 @@
 import { mainNewArticle } from "./pages/new-article-scripts.js"
 import { mainAdminWeb } from "./pages/admin-web.js"
-import { setLocalStorage } from "./localStorage/localStorage-scripts.js"
 import { loadDataBBDD } from "./object-functions.js"
-
-document.addEventListener("DOMContentLoaded", main())
-
 
 function main() {
 
-    setLocalStorage("newList", loadDataBBDD())
+    loadDataBBDD()
 
     const path = window.location.pathname
 
     switch (true) {
         case path.endsWith("/") || path.endsWith("index.html"):
             console.log("index")
+
+
+            
             break
         case path.endsWith("admin-web.html"):
             console.log("admin-web")
 
-            
             mainAdminWeb()
-            /* Debe de llevar, LocalStorage // display, reset, newFastArticle, NewArticle */
 
             break
         case path.endsWith("delete-article.html"):
@@ -52,3 +49,5 @@ function main() {
             console.log("aksldjasld")
     }
 }
+
+document.addEventListener("DOMContentLoaded", main())

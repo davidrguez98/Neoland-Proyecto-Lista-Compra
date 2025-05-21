@@ -9,7 +9,7 @@ let articleList = []
 export function addArticle() {
 
     // Se recoge el contenido del LS y se vuelve a convertir en objetos
-    const newList = readLocalStorage("newList").map(reviveArticle)
+    const articleList = readLocalStorage("newList").map(reviveArticle)
 
     const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
     const selectedSize = parseInt(size.value)
@@ -19,29 +19,37 @@ export function addArticle() {
     const newArticle = new Article(img, name.value, description.value, selectedSize, selectedQuantity, selectedPrice)
     
     // Comprobación de si está el objeto en el stock
-    const existingArticle = newList.find(itemNewList => name.value == itemNewList.name)
+    const existingArticle = articleList.find(itemNewList => name.value == itemNewList.name)
 
     if (existingArticle) {
         existingArticle.addNewStock(selectedSize, selectedQuantity)
         console.log(existingArticle)
     } else {
-        newList.push(newArticle)
+        articleList.push(newArticle)
         console.log("Nuevo artículo añadido:", newArticle)
     }
 
     // Guardado en el LocalStorage
-    console.log(newList)
-    setLocalStorage("newList", newList)
+    console.log(articleList)
+    setLocalStorage("newList", articleList)
 }
 
 //Carga los productos predefinidos (solo principio)
 export function loadDataBBDD() {
 
-    defaultBBDD.map( element => {
-        articleList.push(element)
-    })
-    console.log(articleList)
-    return articleList
+    const loadDataBBDD = readLocalStorage("newList")
+
+    if (loadDataBBDD) {
+        return readLocalStorage("newList")
+    } else {
+        defaultBBDD.map( element => {
+            articleList.push(element)
+            setLocalStorage("newList", articleList)
+            return readLocalStorage("newList")
+        })
+    }
+
+    console.log(readLocalStorage("newList"))
 }
 
 //Carga y muestra el LocalStorage
@@ -72,10 +80,10 @@ export function displayLocalStorage() {
     }
 }
 
-
+//Convierte en objeto los artíclos de una lista
 export function reviveArticle(obj) {
 
-    const article = Object.create(Article.prototype) // Crea una instancia vacía
+    const article = Object.create(Article.prototype)
     article.img = obj.img
     article.name = obj.name
     article.description = obj.description
