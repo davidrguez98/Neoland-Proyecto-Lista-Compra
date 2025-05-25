@@ -73,18 +73,30 @@ export function displayLocalStorage() {
                             <div class="card-body">  
                                 <h5 class="card-title">${article.name}</h5>
                                 <textarea class="card-text short-description">${article.description}</textarea>
-                                <select class="form-select mb-2" aria-label="Default select example">
-                                    <option selected>250 gr</option>
-                                    <option value="1">500 gr</option>
-                                    <option value="2">1 Kg</option>
+                                <select class="form-select mb-2 sizeSelector" aria-label="Default select example">
+                                    <option selected value="250">250 gr</option>
+                                    <option value="500">500 gr</option>
+                                    <option value="1000">1 Kg</option>
                                 </select>
-                                <h6>15,00$</h6>
+                                <h6 class="priceSelector">${article.price["250"].toFixed(2)}$</h6>
                                 <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Add to cart</button>
                             </div>
                         </div>
                     </div>`
-                
-            } 
+            }
+
+            const allSizeSelectors = document.querySelectorAll(".sizeSelector")
+            const allPriceDisplays = document.querySelectorAll(".priceSelector")
+
+            // Actualiza el precio cuando se cambia el selector
+            allSizeSelectors.forEach((selector, index) => {
+                selector.addEventListener("change", function () {
+                    const selectedSize = selector.value
+                    const newPrice = list[index].price[selectedSize]
+                    allPriceDisplays[index].textContent = `${newPrice.toFixed(2)}$`
+                })
+            })
+
         } else if(window.location.pathname.endsWith("admin-web.html")) { //hay que añadirle un nuevo formato para el admin
 
                 for (let article of list) {
