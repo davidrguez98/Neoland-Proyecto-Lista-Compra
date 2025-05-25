@@ -72,7 +72,7 @@ export function displayLocalStorage() {
                             <img src="${article.img}" alt="photo of coffee">
                             <div class="card-body">  
                                 <h5 class="card-title">${article.name}</h5>
-                                <p class="card-text">${article.description}</p>
+                                <textarea class="card-text short-description">${article.description}</textarea>
                                 <select class="form-select mb-2" aria-label="Default select example">
                                     <option selected>250 gr</option>
                                     <option value="1">500 gr</option>

@@ -58,5 +58,24 @@ main {
     .form-select, h6 {
         margin-bottom: 1em;
     }
+
 }
+
+textarea.short-description {
+      border: none;
+        resize: none;
+        overflow-y: scroll;
+        width: 100%;
+        height: 6em;
+        font-family: inherit;
+        font-size: inherit;
+        background-color: transparent;
+        outline: none;
+        padding: 0;
+        scrollbar-width: none;
+        }
+
+        textarea.short-description::-webkit-scrollbar {
+        display: none;
+        }
 
