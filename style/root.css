@@ -5,4 +5,12 @@
     --color-background: #f5f0e6;
     --color-buttons: #4b2e2b;
     --color-text: #2e2e2e;
+
+    /* ============= TEXT SIZES ============= */
+
+    --text-tiny: 0.5rem;
+    --text-normal: 1rem;
+    --text-medium: 1.2rem;
+    --text-large: 2rem;
+    --text-extralarge: 3rem;
 }
