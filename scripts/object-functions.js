@@ -99,27 +99,44 @@ export function displayLocalStorage() {
 
         } else if(window.location.pathname.endsWith("admin-web.html")) { //hay que añadirle un nuevo formato para el admin
 
-                for (let article of list) {
+            for (let article of list) { //Como mejora debería de añadirle un contador de artículos para que se dividan en páginas
 
-                    document.querySelector("#StorageList").innerHTML += `
-                        <ul>
-                            <li><img src="${article.img}" alt=""></li>
-                            <li>${article.name}</li>
-                            <li>${article.description}</li>
-                            <ul>
-                                <li>${article.stock["250"]}</li>
-                                <li>${article.stock["500"]}</li>
-                                <li>${article.stock["1000"]}</li>
-                            </ul>
-                            <ul>
-                                <li>${article.price["250"]}</li>
-                                <li>${article.price["500"]}</li>
-                                <li>${article.price["1000"]}</li>
-                            </ul>
-                        </ul>
-                        `
+                document.querySelector("#StorageList").innerHTML += `
+                    <div class="card mb-3" style="max-width: 100%;">
 
-                }
+                        <div class="row g-0">
+                            <div class="col-md-4" style="width: 20%">
+                                <img src="${article.img}" alt="photo of coffee" class="img-fluid rounded-start" style=" height: 15rem">
+                            </div>
+
+                            <div class="col-md-8 d-flex align-items-stretch py-2" style="width: 60%;">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">${article.name}</h5>
+                                    <p class="card-text">${article.description}</p>
+                                    <div class="gap-2 mt-auto"> <!-- empuja los botones abajo -->
+                                        <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Edit</button>
+                                        <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-stretch py-2" style="width: 20%;">
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title mb-0">Stock</h6>
+                                    <p class="mb-0">250gr - ${article.stock["250"]} Units</p>
+                                    <p class="mb-0">500gr - ${article.stock["500"]} Units</p>
+                                    <p class="mb-0">1Kg   - ${article.stock["1000"]} Units</p>
+
+                                    <h6 class="card-title mb-0" style="margin-top: 1em;">Price</h6>
+                                    <p class="mb-0">250gr - ${article.price["250"].toFixed(2)}$</p>
+                                    <p class="mb-0">500gr - ${article.price["500"].toFixed(2)}$</p>
+                                    <p class="mb-0">1Kg   - ${article.price["1000"].toFixed(2)}$</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `
+            }
         }
     }
 }
