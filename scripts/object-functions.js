@@ -6,12 +6,12 @@ import { setLocalStorage, readLocalStorage } from "./localStorage/localStorage-s
 let articleList = []
 
 //Crea artículos y comprueba si ya están
-export function addArticle() {
+export async function addArticle() {
 
     // Se recoge el contenido del LS y se vuelve a convertir en objetos
     const articleList = readLocalStorage("newList").map(reviveArticle)
 
-    const img = file.files[0] ? URL.createObjectURL(file.files[0]) : ""
+    const img = file.files[0] ? await fileToBase64(file.files[0]) : ""
     const selectedSize = parseInt(size.value)
     const selectedQuantity = parseInt(quantity.value)
     const selectedPrice = price.value
@@ -78,7 +78,7 @@ export function displayLocalStorage() {
                                     <option value="500">500 gr</option>
                                     <option value="1000">1 Kg</option>
                                 </select>
-                                <h6 class="priceSelector">${article.price["250"].toFixed(2)}$</h6>
+                                <h6 class="priceSelector">${Number(article.price["250"]).toFixed(2)}$</h6>
                                 <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Add to cart</button>
                             </div>
                         </div>
@@ -97,40 +97,48 @@ export function displayLocalStorage() {
                 })
             })
 
-        } else if(window.location.pathname.endsWith("admin-web.html")) { //hay que añadirle un nuevo formato para el admin
-
+        } else if(window.location.pathname.endsWith("admin-web.html")) {
             for (let article of list) { //Como mejora debería de añadirle un contador de artículos para que se dividan en páginas
 
                 document.querySelector("#StorageList").innerHTML += `
-                    <div class="card mb-3" style="max-width: 100%;">
+                    <div class="card mb-3 d-flex flex-row" style="max-width: 100%;">
 
-                        <div class="row g-0">
-                            <div class="col-md-4" style="width: 20%">
-                                <img src="${article.img}" alt="photo of coffee" class="img-fluid rounded-start" style=" height: 15rem">
+                        <div class="col-md-4" style="width: 20%">
+                            <img src="${article.img}" alt="photo of coffee" class="img-fluid" style="width: 100%">
+                        </div>
+
+                        <div style="padding: 2rem 0; width: 100%">
+                            <div>
+                                <h4 class="card-title">${article.name}</h4>
                             </div>
 
-                            <div class="col-md-8 d-flex align-items-stretch py-2" style="width: 60%;">
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">${article.name}</h5>
-                                    <p class="card-text">${article.description}</p>
-                                    <div class="gap-2 mt-auto"> <!-- empuja los botones abajo -->
-                                        <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Edit</button>
-                                        <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Delete</button>
+                            <div class="row g-0">
+                                <div class="col-md-8 py-2" style="width: 60%;">
+                                    <div class="card-body d-flex flex-column px-0">
+                                        <p class="card-text">${article.description}</p>
+                                        <div class="gap-2 mt-auto"> <!-- empuja los botones abajo -->
+                                            <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Edit</button>
+                                            <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Delete</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="d-flex align-items-stretch py-2" style="width: 20%;">
-                                <div class="card-body d-flex flex-column">
-                                    <h6 class="card-title mb-0">Stock</h6>
-                                    <p class="mb-0">250gr - ${article.stock["250"]} Units</p>
-                                    <p class="mb-0">500gr - ${article.stock["500"]} Units</p>
-                                    <p class="mb-0">1Kg   - ${article.stock["1000"]} Units</p>
+                                <div class="d-flex align-items-stretch py-2" style="width: 20%;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">Stock</h5>
+                                        <p class="mb-0">250gr - ${(article.stock["250"])} Units</p>
+                                        <p class="mb-0">500gr - ${article.stock["500"]} Units</p>
+                                        <p class="mb-0">1Kg   - ${article.stock["1000"]} Units</p>
+                                    </div>
+                                </div>
 
-                                    <h6 class="card-title mb-0" style="margin-top: 1em;">Price</h6>
-                                    <p class="mb-0">250gr - ${article.price["250"].toFixed(2)}$</p>
-                                    <p class="mb-0">500gr - ${article.price["500"].toFixed(2)}$</p>
-                                    <p class="mb-0">1Kg   - ${article.price["1000"].toFixed(2)}$</p>
+                                <div class="d-flex align-items-stretch py-2" style="width: 20%;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">Price</h5>
+                                        <p class="mb-0">250gr - ${Number(article.price["250"]).toFixed(2)}$</p>
+                                        <p class="mb-0">500gr - ${Number(article.price["500"]).toFixed(2)}$</p>
+                                        <p class="mb-0">1Kg   - ${Number(article.price["1000"]).toFixed(2)}$</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -152,4 +160,14 @@ function reviveArticle(obj) {
     article.price = obj.price
     return article
 
+}
+
+//Convierte la img a base64
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = (error) => reject(error)
+    })
 }
