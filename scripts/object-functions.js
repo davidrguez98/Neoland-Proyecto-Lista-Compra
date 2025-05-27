@@ -117,8 +117,8 @@ export function displayLocalStorage() {
                                     <div class="card-body d-flex flex-column px-0">
                                         <p class="card-text">${article.description}</p>
                                         <div class="gap-2 mt-auto"> <!-- empuja los botones abajo -->
-                                            <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Edit</button>
-                                            <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Delete</button>
+                                            <button id="editButton" class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Edit</button>
+                                            <button id="deleteButton" class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Delete</button>
                                         </div>
                                     </div>
                                 </div>
