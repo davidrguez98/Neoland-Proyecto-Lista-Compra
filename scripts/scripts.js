@@ -12,12 +12,12 @@ function main() {
     const path = window.location.pathname
 
     switch (true) {
-        case path.endsWith("/") || path.endsWith("index"):
+        case path.endsWith("/") || path.endsWith("index.html"):
             console.log("index")
             mainIndexWeb()
             break
 
-        case path.endsWith("/admin-web"):
+        case path.endsWith("/admin-web.html"):
             console.log("admin-web")
             mainAdminWeb()
             break
@@ -30,7 +30,7 @@ function main() {
             })
             break
 
-        case path.endsWith("/update-article"):
+        case path.endsWith("/update-article.html"):
             console.log("update-article")
             mainEditArticle()
             break
