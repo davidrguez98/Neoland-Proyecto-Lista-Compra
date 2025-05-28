@@ -17,16 +17,12 @@ function main() {
             mainIndexWeb()
             break
 
-        case path.endsWith("admin-web.html"):
+        case path.endsWith("/admin-web.html"):
             console.log("admin-web")
             mainAdminWeb()
             break
 
-        case path.endsWith("delete-article.html"):
-            console.log("delete-article")
-            break
-
-        case path.endsWith("new-article.html"):
+        case path.endsWith("/new-article.html"):
             document.querySelector(".new-article-js").addEventListener("click", function(event) {
                 event.preventDefault()
                 mainNewArticle()
@@ -34,7 +30,7 @@ function main() {
             })
             break
 
-        case path.endsWith("update-article.html"):
+        case path.endsWith("/update-article.html"):
             console.log("update-article")
             mainEditArticle()
             break
