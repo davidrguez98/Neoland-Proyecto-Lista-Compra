@@ -100,58 +100,59 @@ export function displayLocalStorage() {
         } else if(window.location.pathname.endsWith("admin-web.html")) {
             for (let article of list) { //Como mejora debería de añadirle un contador de artículos para que se dividan en páginas
 
-                document.querySelector("#StorageList").innerHTML += `
+                    document.querySelector("#StorageList").innerHTML += `
                     <div class="card mb-3 d-flex flex-row" style="max-width: 100%;">
-
-                        <div class="col-md-4" style="width: 20%">
-                            <img src="${article.img}" alt="photo of coffee" class="img-fluid" style="width: 100%">
-                        </div>
-
-                        <div style="padding: 2rem 0; width: 100%">
-                            <div>
-                                <h4 class="card-title">${article.name}</h4>
-                            </div>
-
-                            <div class="row g-0">
-                                <div class="col-md-8 py-2" style="width: 60%;">
-                                    <div class="card-body d-flex flex-column px-0">
-                                        <p class="card-text">${article.description}</p>
-                                        <div class="gap-2 mt-auto"> <!-- empuja los botones abajo -->
-                                            <button id="editButton" class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Edit</button>
-                                            <button id="deleteButton" class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-stretch py-2" style="width: 20%;">
-                                    <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title">Stock</h5>
-                                        <p class="mb-0">250gr - ${(article.stock["250"])} Units</p>
-                                        <p class="mb-0">500gr - ${article.stock["500"]} Units</p>
-                                        <p class="mb-0">1Kg   - ${article.stock["1000"]} Units</p>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex align-items-stretch py-2" style="width: 20%;">
-                                    <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title">Price</h5>
-                                        <p class="mb-0">250gr - ${Number(article.price["250"]).toFixed(2)}$</p>
-                                        <p class="mb-0">500gr - ${Number(article.price["500"]).toFixed(2)}$</p>
-                                        <p class="mb-0">1Kg   - ${Number(article.price["1000"]).toFixed(2)}$</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    
+                    <div class="col-md-4" style="width: 20%">
+                    <img src="${article.img}" alt="photo of coffee" class="img-fluid" style="width: 100%">
+                    </div>
+                    
+                    <div style="padding: 2rem 0; width: 100%">
+                    <div>
+                    <h4 class="card-title">${article.name}</h4>
+                    </div>
+                    
+                    <div class="row g-0">
+                    <div class="col-md-8 py-2" style="width: 60%;">
+                    <div class="card-body d-flex flex-column px-0">
+                    <p class="card-text">${article.description}</p>
+                    <div class="gap-2 mt-auto"> <!-- empuja los botones abajo -->
+                    <button id="editButton" class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Edit</button>
+                    <button id="deleteButton" class="btn ${article.name}" style="background-color: var(--color-buttons); color: var(--color-background);">Delete</button>
+                    </div>
+                    </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-stretch py-2" style="width: 20%;">
+                    <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Stock</h5>
+                    <p class="mb-0">250gr - ${(article.stock["250"])} Units</p>
+                    <p class="mb-0">500gr - ${article.stock["500"]} Units</p>
+                    <p class="mb-0">1Kg   - ${article.stock["1000"]} Units</p>
+                    </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-stretch py-2" style="width: 20%;">
+                    <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Price</h5>
+                    <p class="mb-0">250gr - ${Number(article.price["250"]).toFixed(2)}$</p>
+                    <p class="mb-0">500gr - ${Number(article.price["500"]).toFixed(2)}$</p>
+                    <p class="mb-0">1Kg   - ${Number(article.price["1000"]).toFixed(2)}$</p>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
                     </div>
                     `
+                    
             }
         }
     }
 }
-
-//Convierte en objeto los artíclos de una lista
+    
+    //Convierte en objeto los artíclos de una lista
 function reviveArticle(obj) {
-
+        
     const article = Object.create(Article.prototype)
     article.img = obj.img
     article.name = obj.name

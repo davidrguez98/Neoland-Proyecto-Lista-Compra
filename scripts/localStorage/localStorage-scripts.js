@@ -19,15 +19,20 @@ export function readLocalStorage(key) {
     }
 }
 
-export function deleteItemLocalStorage(key) {
-    if (localStorage.getItem(key) !== null) {
-        localStorage.removeItem(key);
-        console.log("Item deleted:", key);
-    } else {
-        console.error(`Error: ${key} doesn't found`);
-    }
-}
-
 export function resetLocalStorage() {
     localStorage.clear()
+}
+
+export function deleteItemLocalStorage() {
+
+    const selectedButton = document.querySelectorAll("#StorageList #deleteButton")
+    const list = readLocalStorage("newList")
+
+    for (let index = 0; index < selectedButton.length; index++) {
+        selectedButton[index].addEventListener("click", function() {
+            list.splice(index, 1)
+            setLocalStorage("newList", list)
+            window.location.assign("./admin-web.html")
+        })
+    }
 }
