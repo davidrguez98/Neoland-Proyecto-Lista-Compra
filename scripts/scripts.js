@@ -2,6 +2,8 @@ import { loadDataBBDD } from "./object-functions.js"
 import { mainAdminWeb } from "./pages/admin-web-scripts.js"
 import { mainNewArticle } from "./pages/new-article-scripts.js"
 import { mainIndexWeb } from "./pages/index-web-scripts.js"
+import { mainEditArticle } from "./pages/update-article-scripts.js"
+
 
 function main() {
 
@@ -34,6 +36,7 @@ function main() {
 
         case path.endsWith("update-article.html"):
             console.log("update-article")
+            mainEditArticle()
             break
 
         default:

@@ -14,30 +14,88 @@
 
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
         <script defer type="module" src="../scripts/scripts.js"></script>
+        <script defer type="module" src="../scripts/pages/update-article-scripts.js"></script>
         
     </head>
+    
     <body>
+
         <nav class="d-flex justify-content-center">
-                <ul class="nav justify-content-between">
-                    <li class="nav-item d-flex align-items-center">
-                        <a class="" aria-current="page" href="../"><img src="../assets/images/logo.png" alt="coffee-logo"></a>
-                    </li>
-                    <li class="nav-item d-flex align-items-center">
-                        <h6>Edición de artículo</h6>
-                    </li>
-                    <li class="nav-item d-flex align-items-center">
-                      <button class="nav-link shoppingCartIcon"><i class="bi bi-person-fill"></i></button>
-                    </li>
-                  </ul>
+            <ul class="nav justify-content-between">
+                <li class="nav-item d-flex align-items-center">
+                    <a class="" aria-current="page" href="../"><img src="../assets/images/logo.png" alt="coffee-logo"></a>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <h6>Stock de la tienda</h6>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                <button class="nav-link shoppingCartIcon"><i class="bi bi-person-fill"></i></button>
+                </li>
+            </ul>
         </nav>
 
         <main>
+            <div class="mt-4 w-75 d-flex justify-content-center">
+                <form id="editForm" class="w-100 p-3 rounded-3 shadow-sm" style="background-color: var(--color-background);">
 
-            <div id="editArticleContainer" class="editArticleContainer">
+                    <!-- Imagen -->
+                    <div class="mb-3 text-center">
+                        <img id="previewImage" alt="photo of coffee" class="img-fluid" style="max-height: 350px">
+                        <input type="file" class="form-control mt-2" id="editImage" accept="image/*" />
+                    </div>
 
+                    <!-- Nombre -->
+                    <h5 class="mt-4 mb-2">Product's name</h5>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="editName" />
+                    </div>
+
+                    <!-- Descripción -->
+                    <h5 class="mt-4 mb-2">Product's description</h5>
+                    <div class="input-group mb-2">
+                        <textarea class="form-control" id="editDescription" rows="3"></textarea>
+                    </div>
+
+                    <!-- Stock -->
+                    <h5 class="mt-4 mb-2">Stock (Units)</h5>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text" style="width: 4rem;">250gr</span>
+                        <input type="number" class="form-control" id="editStock250" />
+                    </div>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text" style="width: 4rem;">500gr</span>
+                        <input type="number" class="form-control" id="editStock500" />
+                    </div>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text" style="width: 4rem;">1Kg</span>
+                        <input type="number" class="form-control" id="editStock1000" />
+                    </div>
+
+                    <!-- Precios -->
+                    <h5 class="mt-4 mb-2">Prices (€)</h5>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text" style="width: 4rem;">250gr</span>
+                        <input type="number" step="any" class="form-control" id="editPrice250" />
+                    </div>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text" style="width: 4rem;">500gr</span>
+                        <input type="number" step="any" class="form-control" id="editPrice500" />
+                    </div>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text" style="width: 4rem;">1Kg</span>
+                        <input type="number" step="any" class="form-control" id="editPrice1000" />
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="d-flex justify-content-between gap-2">
+                        <a class="btn" style="background-color: var(--color-buttons); color: var(--color-background);" href="./admin-web.html" role="button">Cancelar</a>
+                        <div>
+                            <input class="btn btn-primary border-0" type="submit" value="Guardar cambios" style="background-color: var(--color-buttons);" />
+                        </div>
+                    </div>
+
+                </form>
             </div>
-
         </main>
-
     </body>
 </html>

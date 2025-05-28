@@ -34,6 +34,59 @@ export async function addArticle() {
     setLocalStorage("newList", articleList)
 }
 
+//Edita artículos de la lista
+export function editArticle() {
+
+    const index = parseInt(localStorage.getItem("editIndex"))
+
+    if (isNaN(index)) {
+        window.location.href = "admin-web.html"
+    }
+
+    const list = readLocalStorage("newList")
+    const article = list[index]
+
+    // Rellenar campos
+    document.querySelector("#editName").value = article.name
+    document.querySelector("#editDescription").value = article.description
+    document.querySelector("#editPrice250").value = Number(article.price["250"]).toFixed(2)
+    document.querySelector("#editPrice500").value = Number(article.price["500"]).toFixed(2)
+    document.querySelector("#editPrice1000").value = Number(article.price["1000"]).toFixed(2)
+    document.querySelector("#editStock250").value = article.stock["250"]
+    document.querySelector("#editStock500").value = article.stock["500"]
+    document.querySelector("#editStock1000").value = article.stock["1000"]
+    document.querySelector("#previewImage").src = article.img
+
+    fileToBase64()
+
+    // Guardar cambios
+    document.querySelector("#editForm").addEventListener("submit", async function (event) {
+        
+        event.preventDefault()
+
+        article.name = document.querySelector("#editName").value
+        article.description = document.querySelector("#editDescription").value
+
+        article.price["250"] = Number(document.querySelector("#editPrice250").value)
+        article.price["500"] = Number(document.querySelector("#editPrice500").value)
+        article.price["1000"] = Number(document.querySelector("#editPrice1000").value)
+
+        article.stock["250"] = parseInt(document.querySelector("#editStock250").value)
+        article.stock["500"] = parseInt(document.querySelector("#editStock500").value)
+        article.stock["1000"] = parseInt(document.querySelector("#editStock1000").value)
+
+        const fileInput = document.querySelector("#editImage")
+        if (fileInput.files[0]) {
+            article.img = await fileToBase64(fileInput.files[0])
+        }
+
+        list[index] = article
+        setLocalStorage("newList", list)
+        localStorage.removeItem("editIndex")
+        window.location.href = "admin-web.html"
+    })
+}
+
 //Carga los productos predefinidos (solo principio)
 export function loadDataBBDD() {
 
@@ -144,7 +197,6 @@ export function displayLocalStorage() {
                         </div>
                     </div>
                     `
-                    
             }
         }
     }
