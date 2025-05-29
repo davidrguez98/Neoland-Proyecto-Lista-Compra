@@ -132,7 +132,7 @@ export function displayLocalStorage() {
                                     <option value="1000">1 Kg</option>
                                 </select>
                                 <h6 class="priceSelector ps-1">${Number(article.price["250"]).toFixed(2)}$</h6>
-                                <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Add to cart</button>
+                                <button id="btnSelectedProduct" class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Add to cart</button>
                             </div>
                         </div>
                     </div>`
