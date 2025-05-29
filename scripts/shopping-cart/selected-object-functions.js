@@ -39,13 +39,40 @@ export function displayProductInShoppingCart() {
 
     if (!list){
         console.log("lista vacía")
+
+        document.querySelector("#orderSummaryContainer").innerHTML =
+                `
+                <div class="card cart-summary">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Order Summary</h5>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Subtotal</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Shipping</span>
+                            <span></span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Discount</span>
+                            <span></span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-4">
+                            <strong>Total</strong>
+                            <strong></strong>
+                        </div>
+                        <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Proceed to Checkout</button>
+                    </div>
+                </div>
+            `
+            
     } else {
         if (window.location.pathname.endsWith("/") || window.location.pathname.endsWith("index.html")) { 
 
             document.querySelector("#shoppingCartContainer").innerHTML = ""
-            for (let article of list) { //tengo que ver como vario el precio
 
-
+            for (let article of list) { 
                 document.querySelector("#shoppingCartContainer").innerHTML +=
                 `
                 <div class="d-flex flex-row cart-item mb-3">
@@ -66,6 +93,44 @@ export function displayProductInShoppingCart() {
                 </div>
                 `
             }
-        }
+
+            const listPrices = []
+            document.querySelector("#orderSummaryContainer").innerHTML = ""
+            for (let article of list) { 
+                let subtotal = 0
+                let shipping = 10
+                listPrices.push(parseFloat(article.price * article.quantity))
+                for (let num of listPrices) subtotal+=num
+                let total =  (subtotal + shipping)
+    
+                
+                document.querySelector("#orderSummaryContainer").innerHTML =
+                `
+                <div class="card cart-summary">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Order Summary</h5>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Subtotal</span>
+                            <span>$${subtotal.toFixed(2)}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Shipping</span>
+                            <span>$${shipping.toFixed(2)}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Tax</span>
+                            <span>10.00%</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-4">
+                            <strong>Total</strong>
+                            <strong>$${total.toFixed(2)}</strong>
+                        </div>
+                        <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Proceed to Checkout</button>
+                    </div>
+                </div>
+            `
+            }
     }
+}
 }

@@ -6,6 +6,7 @@ export function mainIndexWeb() {
 
     displayLocalStorage()
     selectedProductSC()
+    displayProductInShoppingCart()
 
 }
 
