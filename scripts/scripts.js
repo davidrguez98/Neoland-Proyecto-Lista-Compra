@@ -36,8 +36,8 @@ function main() {
             break
 
         default:
-            console.log("aksldjasld") /* Hay que añadir un caso y pag personalizada para error 404*/
+            window.location.href = "./404.html"
     }
 }
 
-document.addEventListener("DOMContentLoaded", main())
+document.addEventListener("DOMContentLoaded", main)
