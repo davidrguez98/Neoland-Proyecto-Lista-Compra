@@ -154,7 +154,7 @@ export function displayLocalStorage() {
             for (let article of list) { //Como mejora debería de añadirle un contador de artículos para que se dividan en páginas
 
                     document.querySelector("#StorageList").innerHTML += `
-                    <div class="card mb-3 d-flex flex-row" style="max-width: 100%;">
+                    <div class="card mb-3 d-flex flex-row" style="max-width: 100%; border: none;">
                     
                         <div class="col-md-4" style="width: 20%">
                             <img src="${article.img}" alt="photo of coffee" class="img-fluid" style="width: 100%">

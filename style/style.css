@@ -3,10 +3,14 @@ body {
     height: 100%;
 }
 
+.nav-index {
+    
+    margin-bottom: 2em;
+}
+
 nav {
     background-color: var(--color-background);
     height: 4rem;
-    margin-bottom: 2em;
 
     .nav-link {
         color: var(--color-text);
