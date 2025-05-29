@@ -1,4 +1,5 @@
-import { readLocalStorage, setLocalStorage } from "../localStorage/localStorage-scripts.js"
+import { readLocalStorage, resetLocalStorage, setLocalStorage } from "../localStorage/localStorage-scripts.js"
+
 
 const shoppingCartList = []
 
@@ -23,7 +24,6 @@ export function selectedProductSC() {
             if (existingArticle) {
                 existingArticle.quantity = existingArticle.quantity + 1 
             } else {
-                console.log("Este " + productInfo)
                 shoppingCartList.push(productInfo)
             }
             console.log(shoppingCartList)
@@ -47,25 +47,37 @@ export function displayProductInShoppingCart() {
                         <h5 class="card-title mb-4">Order Summary</h5>
                         <div class="d-flex justify-content-between mb-3">
                             <span>Subtotal</span>
-                            <span></span>
+                            <span>--</span>
                         </div>
                         <div class="d-flex justify-content-between mb-3">
                             <span>Shipping</span>
-                            <span></span>
+                            <span>--</span>
                         </div>
                         <div class="d-flex justify-content-between mb-3">
                             <span>Discount</span>
-                            <span></span>
+                            <span>--</span>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between mb-4">
                             <strong>Total</strong>
-                            <strong></strong>
+                            <strong>--</strong>
                         </div>
                         <button class="btn" style="background-color: var(--color-buttons); color: var(--color-background);">Proceed to Checkout</button>
                     </div>
                 </div>
             `
+
+        document.querySelector("#shoppingCartContainerButton").innerHTML = ""
+
+        document.querySelector("#shoppingCartContainer").innerHTML = 
+        `
+        <div class="d-flex flex-row cart-item mb-3">
+            <div class="d-flex flex-column" style="width: 70%;">
+                
+            </div>
+            
+        </div>
+        `
             
     } else {
         if (window.location.pathname.endsWith("/") || window.location.pathname.endsWith("index.html")) { 
@@ -93,6 +105,15 @@ export function displayProductInShoppingCart() {
                 </div>
                 `
             }
+
+            document.querySelector("#shoppingCartContainerButton").innerHTML = ""
+                   
+            document.querySelector("#shoppingCartContainerButton").innerHTML =
+            `
+            <button class="btn" id="removeItemsShoppingCart" style="background-color: var(--color-background); color: var(--color-text); type="submit">Remove all items</button>
+            `
+
+            removeShoppingCart()
 
             const listPrices = []
             document.querySelector("#orderSummaryContainer").innerHTML = ""
@@ -131,6 +152,22 @@ export function displayProductInShoppingCart() {
                 </div>
             `
             }
+        }
     }
 }
+
+function removeShoppingCart() {
+
+    const btnReset = document.querySelector("#shoppingCartContainerButton #removeItemsShoppingCart")
+
+    if (!btnReset) {
+        console.log("No exis")
+    } else {
+        btnReset.addEventListener("click", function(event) {
+            event.preventDefault()
+            console.log("pulsando")
+            resetLocalStorage("shoppingCartList")
+            displayProductInShoppingCart()
+        })
+    }
 }

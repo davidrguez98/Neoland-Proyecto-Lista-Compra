@@ -9,7 +9,7 @@ export function mainAdminWeb() {
 
     document.querySelector(".reset-storage-js").addEventListener("click", function (event) {
         event.preventDefault()
-        resetLocalStorage()
+        resetLocalStorage("newList")
         displayLocalStorage()
     })
     

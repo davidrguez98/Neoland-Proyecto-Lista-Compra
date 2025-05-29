@@ -19,8 +19,9 @@ export function readLocalStorage(key) {
     }
 }
 
-export function resetLocalStorage() {
-    localStorage.clear()
+export function resetLocalStorage(list) {
+    localStorage.removeItem(list)
+    console.log("Datos borrados")
 }
 
 export function deleteItemLocalStorage() {
