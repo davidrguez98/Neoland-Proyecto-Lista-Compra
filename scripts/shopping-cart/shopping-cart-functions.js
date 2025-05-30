@@ -1,8 +1,5 @@
 import { readLocalStorage, resetLocalStorage, setLocalStorage, deleteItemLocalStorageShoppingCart } from "../localStorage/localStorage-scripts.js"
 
-
-const shoppingCartList = []
-
 export function selectedProductSC() {
 
     const btnSelectedProduct = document.querySelectorAll(".container-articles #btnSelectedProduct")
@@ -16,6 +13,8 @@ export function selectedProductSC() {
 
             const productName = list[index].name
             const productPrice = Number(list[index].price[selectedSize]).toFixed(2)
+
+            let shoppingCartList = readLocalStorage("shoppingCartList") || []
 
             let productInfo = {"name": productName, "price": productPrice, "quantity": 1}
 
@@ -113,8 +112,8 @@ export function displayProductInShoppingCart() {
             <button class="btn" id="removeItemsShoppingCart" style="background-color: var(--color-background); color: var(--color-text); type="submit">Remove all items</button>
             `
 
-            removeShoppingCart()
             deleteItemLocalStorageShoppingCart()
+            removeShoppingCart()
 
             const listPrices = []
             document.querySelector("#orderSummaryContainer").innerHTML = ""
