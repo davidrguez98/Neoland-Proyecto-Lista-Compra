@@ -44,6 +44,7 @@ export function deleteItemLocalStorageShoppingCart() {
 
     const selectedButton = document.querySelectorAll("#shoppingCartContainer .removeOneShoppingCart")
     const shoppingCartList = readLocalStorage("shoppingCartList")
+    
 
     for (let index = 0; index < selectedButton.length; index++) {
         selectedButton[index].addEventListener("click", function(event) {
@@ -55,6 +56,37 @@ export function deleteItemLocalStorageShoppingCart() {
     }
 }
 
+export function editItemLocalStorageShoppingCart() {
+
+    const ButtonItemShoppingCartPlus = document.querySelectorAll("#shoppingCartContainer .itemShoppingCartPlus")
+    const ButtonItemShoppingCartMinus = document.querySelectorAll("#shoppingCartContainer .itemShoppingCartMinus")
+    const shoppingCartList = readLocalStorage("shoppingCartList")
+
+    for (let index = 0; index < shoppingCartList.length; index++) {
+        ButtonItemShoppingCartPlus[index].addEventListener("click", function(event) {
+            event.preventDefault()
+            shoppingCartList[index].quantity = shoppingCartList[index].quantity + 1 
+            setLocalStorage("shoppingCartList", shoppingCartList)
+            displayProductInShoppingCart()
+        })
+
+        ButtonItemShoppingCartMinus[index].addEventListener("click", function(event) {
+            event.preventDefault()
+
+            if (shoppingCartList[index].quantity > 0) {
+                shoppingCartList[index].quantity = shoppingCartList[index].quantity - 1 
+                setLocalStorage("shoppingCartList", shoppingCartList)
+                displayProductInShoppingCart()
+            } if (shoppingCartList[index].quantity < 1) {
+                console.log("soajdhaskd")
+                shoppingCartList.splice(index, 1)
+                setLocalStorage("shoppingCartList", shoppingCartList)
+                displayProductInShoppingCart()
+            }
+        })
+        }
+}
+
 export function editItemLocalStorage() {
 
     const selectedButton = document.querySelectorAll("#StorageList #editButton")
@@ -64,6 +96,10 @@ export function editItemLocalStorage() {
             
             localStorage.setItem("editIndex", index)
             window.location.assign("./update-article.html") 
-        })  
+        }) 
+
     }
+
+    
 }
+

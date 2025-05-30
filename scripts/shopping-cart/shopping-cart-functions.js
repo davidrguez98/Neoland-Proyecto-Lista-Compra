@@ -1,4 +1,4 @@
-import { readLocalStorage, resetLocalStorage, setLocalStorage, deleteItemLocalStorageShoppingCart } from "../localStorage/localStorage-scripts.js"
+import { readLocalStorage, resetLocalStorage, setLocalStorage, deleteItemLocalStorageShoppingCart, editItemLocalStorageShoppingCart } from "../localStorage/localStorage-scripts.js"
 
 export function selectedProductSC() {
 
@@ -91,9 +91,9 @@ export function displayProductInShoppingCart() {
                         <h6 class="card-title">${article.name}</h6>
                         <div class=" d-flex">
                             <div class="input-group d-flex">
-                                <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
+                                <button class="btn btn-outline-secondary btn-sm itemShoppingCartMinus" type="button">-</button>
                                 <input style="max-width:100px" type="text" class="form-control  form-control-sm text-center quantity-input" value="${article.quantity}">
-                                <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
+                                <button class="btn btn-outline-secondary btn-sm itemShoppingCartPlus" type="button">+</button>
                             </div>
                         </div>
                     </div>
@@ -113,6 +113,7 @@ export function displayProductInShoppingCart() {
             `
 
             deleteItemLocalStorageShoppingCart()
+            editItemLocalStorageShoppingCart()
             removeShoppingCart()
 
             const listPrices = []
@@ -161,11 +162,10 @@ function removeShoppingCart() {
     const btnReset = document.querySelector("#shoppingCartContainerButton #removeItemsShoppingCart")
 
     if (!btnReset) {
-        console.log("No exis")
+        console.log("No existe")
     } else {
         btnReset.addEventListener("click", function(event) {
             event.preventDefault()
-            console.log("pulsando")
             resetLocalStorage("shoppingCartList")
             displayProductInShoppingCart()
         })
