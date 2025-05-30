@@ -26,7 +26,7 @@ function main() {
             document.querySelector(".new-article-js").addEventListener("click", function(event) {
                 event.preventDefault()
                 mainNewArticle()
-                window.location.assign("./admin-web")
+                window.location.assign("./admin-web.html")
             })
             break
 

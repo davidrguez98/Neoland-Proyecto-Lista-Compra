@@ -1,4 +1,4 @@
-import { displayLocalStorage } from "../object-functions.js"
+import { displayLocalStorage, addArticle } from "../object-functions.js"
 import { deleteItemLocalStorageAdmin, editItemLocalStorage, resetLocalStorage } from "../localStorage/localStorage-scripts.js"
 
 export function mainAdminWeb() {
@@ -11,6 +11,10 @@ export function mainAdminWeb() {
         event.preventDefault()
         resetLocalStorage("newList")
         displayLocalStorage()
+    })
+
+    document.querySelector("#addArticleModal .new-article-js").addEventListener("click", function() {
+        addArticle()
     })
     
 }

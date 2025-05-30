@@ -8,6 +8,7 @@ if (typeof document !== "undefined") {
     quantity = document.querySelector("#quantity")
     price = document.querySelector("#price")
     size = document.querySelector("#floatingSelect")
+    
 }
 
 export { myForm, file, name, description, quantity, price, size }
