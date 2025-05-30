@@ -1,4 +1,4 @@
-import { readLocalStorage, resetLocalStorage, setLocalStorage } from "../localStorage/localStorage-scripts.js"
+import { readLocalStorage, resetLocalStorage, setLocalStorage, deleteItemLocalStorageShoppingCart } from "../localStorage/localStorage-scripts.js"
 
 
 const shoppingCartList = []
@@ -37,7 +37,7 @@ export function displayProductInShoppingCart() {
 
     const list = readLocalStorage("shoppingCartList")
 
-    if (!list){
+    if (!list || list.length == 0){
         console.log("lista vacía")
 
         document.querySelector("#orderSummaryContainer").innerHTML =
@@ -100,7 +100,7 @@ export function displayProductInShoppingCart() {
                     </div>
                     <div class="md-2" style="width: 30%;">
                         <p class="fw-bold mb-0">$${article.price}</p>
-                        <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                        <button type="submit" class="btn btn-sm btn-outline-danger removeOneShoppingCart"><i class="bi bi-trash"></i></button>
                     </div>
                 </div>
                 `
@@ -114,6 +114,7 @@ export function displayProductInShoppingCart() {
             `
 
             removeShoppingCart()
+            deleteItemLocalStorageShoppingCart()
 
             const listPrices = []
             document.querySelector("#orderSummaryContainer").innerHTML = ""

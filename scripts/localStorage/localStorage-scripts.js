@@ -1,3 +1,5 @@
+import { displayProductInShoppingCart } from "../shopping-cart/shopping-cart-functions.js";
+
 export function setLocalStorage(key, value) {
     if (key !== "" && value !== "") {
         localStorage.setItem(key, JSON.stringify(value));
@@ -21,10 +23,10 @@ export function readLocalStorage(key) {
 
 export function resetLocalStorage(list) {
     localStorage.removeItem(list)
-    console.log("Datos borrados")
+    console.log("Datos")
 }
 
-export function deleteItemLocalStorage() {
+export function deleteItemLocalStorageAdmin() {
 
     const selectedButton = document.querySelectorAll("#StorageList #deleteButton")
     const list = readLocalStorage("newList")
@@ -34,6 +36,21 @@ export function deleteItemLocalStorage() {
             list.splice(index, 1)
             setLocalStorage("newList", list)
             window.location.assign("./admin-web.html")
+        })
+    }
+}
+
+export function deleteItemLocalStorageShoppingCart() {
+
+    const selectedButton = document.querySelectorAll("#shoppingCartContainer .removeOneShoppingCart")
+    const shoppingCartList = readLocalStorage("shoppingCartList")
+
+    for (let index = 0; index < selectedButton.length; index++) {
+        selectedButton[index].addEventListener("click", function(event) {
+            event.preventDefault()
+            shoppingCartList.splice(index, 1)
+            setLocalStorage("shoppingCartList", shoppingCartList)
+            displayProductInShoppingCart()
         })
     }
 }
