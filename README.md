@@ -104,8 +104,6 @@ Aplicación web para gestionar una tienda de café con carrito de compras y gest
 
 ## 📸 Capturas de pantalla
 
-Las siguientes imágenes están en la carpeta `assets/screenshots/`:
-
 - `home_display.png`: Vista principal con productos.
 - `storage_display.png`: Panel de administración.
 - `article_display.png`: Vista del formulario de artículo.
