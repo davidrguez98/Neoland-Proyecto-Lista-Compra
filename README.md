@@ -2,7 +2,6 @@
 
 Aplicación web para gestionar una tienda de café con carrito de compras y gestión de inventario. Todo funciona en el navegador usando HTML, CSS y JavaScript con LocalStorage.
 
----
 
 ## 📂 Estructura del proyecto
 
@@ -66,7 +65,6 @@ Aplicación web para gestionar una tienda de café con carrito de compras y gest
 └── README.md
 ```
 
----
 
 ## 🚀 Funcionalidades
 
@@ -81,7 +79,6 @@ Aplicación web para gestionar una tienda de café con carrito de compras y gest
 - Almacenamiento de datos en LocalStorage.
 - Página personalizada 404 para rutas inválidas.
 
----
 
 ## 🧪 Tecnologías
 
@@ -90,7 +87,6 @@ Aplicación web para gestionar una tienda de café con carrito de compras y gest
 - JavaScript (ES Modules)
 - LocalStorage (navegador)
 
----
 
 ## ▶️ Cómo usar
 
@@ -100,15 +96,13 @@ Aplicación web para gestionar una tienda de café con carrito de compras y gest
 4. Agrega, edita o elimina productos.
 5. Todo se guarda automáticamente en el navegador.
 
----
 
 ## 📸 Capturas de pantalla
 
-- `home_display.png`: Vista principal con productos.
-- `storage_display.png`: Panel de administración.
-- `article_display.png`: Vista del formulario de artículo.
+![Vista principal con productos](./assets/screenshots/home_display.png)
+![Panel de administración](./assets/screenshots/storage_display.png)
+![Vista del formulario de artículo](./assets/screenshots/article_display.png)
 
----
 
 ## 👩‍💻 Contacto
 
